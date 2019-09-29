@@ -1,5 +1,6 @@
 package com.example.filesavebackend;
 
+import java.io.InputStream;
 import java.util.Collections;
 
 import org.springframework.boot.SpringApplication;
@@ -44,6 +45,8 @@ class FileResource {
         String exportedContent = "Hello, World!";
         String filename = "my-file.txt";
         HttpHeaders headers = new HttpHeaders();
+        InputStream inputStream = getClass()
+    			.getClassLoader().getResourceAsStream("Joseph Ray - Room 1.5 (Extended Mix).mp3");
         headers.setAccessControlExposeHeaders(Collections.singletonList("Content-Disposition"));
         headers.set("Content-Disposition", "attachment; filename=" + filename);
         return new ResponseEntity<>(exportedContent, headers, HttpStatus.OK);
